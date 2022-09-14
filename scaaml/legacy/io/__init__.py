@@ -11,17 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Dataset creation and usage."""
 
-from unittest.mock import MagicMock
-
-from scaaml.legacy.capture.aes.control import CWControl
-
-
-def test_control():
-    chip_id = 314159
-    with CWControl(chip_id=chip_id, scope_io=MagicMock()) as control:
-        assert control.chip_id == chip_id
-        assert control._scope_io.tio1 == "serial_rx"
-        assert control._scope_io.tio2 == "serial_tx"
-        assert control._scope_io.hs2 == "clkgen"
-        assert control._scope_io.nrst == "high_z"
+from scaaml.legacy.io.dataset import Dataset
+from scaaml.legacy.io.dataset_filler import DatasetFiller
